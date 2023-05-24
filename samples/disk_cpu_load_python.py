@@ -38,6 +38,10 @@ def sum_array(arr):
 
 
 def compute_cpu_load(start_use, end_use, verbose):
+    # Convert the values from strings to integers
+    start_use = [int(value) for value in start_use]
+    end_use = [int(value) for value in end_use]
+
     #compute the difference
     diff_idle = end_use[3] - start_use[3]
     start_total = sum_array(start_use)
