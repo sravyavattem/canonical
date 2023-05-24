@@ -39,7 +39,6 @@ def sum_array(arr):
 
 def compute_cpu_load(start_use, end_use, verbose):
     # Remove the lines that start with "cpu"
-    print(start_use)
     start_use = [value for value in start_use if not value.startswith("cpu")]
     end_use = [value for value in end_use if not value.startswith("cpu")]
 
@@ -82,7 +81,7 @@ if __name__ == '__main__':
     subprocess.run(["blockdev", "--flushbufs", args.device_filename])
 
     # Get CPU statistics at the start
-    start_load = subprocess.check_output(["grep", "cpu", "/proc/stat"]).decode().split()[1:]
+    start_load = subprocess.check_output(["grep", "cpu", "/proc/stat"]).decode().split()
 
     if args.verbose:
         print("Beginning disk read....")
@@ -95,7 +94,7 @@ if __name__ == '__main__':
         print("Disk read complete!")
 
     # Get CPU statistics at the end
-    end_load = subprocess.check_output(["grep", "cpu", "/proc/stat"]).decode().split()[1:]
+    end_load = subprocess.check_output(["grep", "cpu", "/proc/stat"]).decode().split()
 
     # Compute CPU load
     cpu_load = compute_cpu_load(start_load, end_load, args.verbose)
