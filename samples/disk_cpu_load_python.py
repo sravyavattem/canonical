@@ -38,6 +38,11 @@ def sum_array(arr):
 
 
 def compute_cpu_load(start_use, end_use, verbose):
+    # Remove the lines that start with "cpu"
+    print(start_use)
+    start_use = [value for value in start_use if not value.startswith("cpu")]
+    end_use = [value for value in end_use if not value.startswith("cpu")]
+
     # Convert the values from strings to integers
     start_use = [int(value) for value in start_use]
     end_use = [int(value) for value in end_use]
