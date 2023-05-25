@@ -1,0 +1,30 @@
+Test Case for SSH connectivity using Password and Key based auth:
+
+Initial steps:
+
+•	To verify SSH connection, set up a remote server. 
+•	Have a machine with SSH client like OpenSSH or PuTTY installed. 
+•	The server should allow inbound connections from the IP address of client and should have SSH enabled with key-based and password authentication allowed.
+
+1)	For password authentication:
+
+    a)	After ensuring that the above conditions are met, we can start the SSH client. 
+    b)	Specify the destination you want to connect to (Server's IP or Hostname) 
+    c)	Enter the username and password and open the connection. 
+
+If successful, you will receive access to the server's CLI without any errors. 
+If you are unable to access, or face any errors- for instance, authentication failures, that means the SSH connection has failed. Ensure that the credentials are correct.
+
+2)	Key based authentication:
+
+    a)	The process is similar. With an additional step. Generate an SSH key pair (public and private key) on Client.
+    b)	Add the public key to the authorized keys file on Server.
+    c)	Once that is complete, you can start the SSH client and provide IP along with the username. Select the private key generated earlier and try to open the connection. 
+
+Same as before, if successful, you will receive access to the server's CLI without any errors. 
+If any errors like authentication failure show up or you are unable to access the CLI, the SSH connection has failed. Verify that the right key-pair is being used and that the public key has been added to the list of authorized keys.
+
+Tools: Any compatible SSH software like PuTTY or OpenSSH
+
+Teardown: After testing is complete, we can remove any files or configuration created specifically during the process of testing if we do not need them.
+
